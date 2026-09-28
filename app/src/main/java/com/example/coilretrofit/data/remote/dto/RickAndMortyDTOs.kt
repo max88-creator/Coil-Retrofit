@@ -1,6 +1,5 @@
 package com.example.coilretrofit.data.remote.dto
 
-import com.example.coilretrofit.domain.model.CharacterStatus
 import com.google.gson.annotations.SerializedName
 
 data class ReferenceDTO(
@@ -20,7 +19,7 @@ data class CharacterDto(
     val image: String,
     val episode: List<String>,
     val url: String,
-    val created: String,
+    val created: String
 )
 
 data class LocationDto(

@@ -11,7 +11,7 @@ data class Character(
     val gender: String,
     val originName: String,
     val location: String,
-    val episodesCount: String,
+    val episodesCount: Int,
     val imageUrl: String
 )
 
