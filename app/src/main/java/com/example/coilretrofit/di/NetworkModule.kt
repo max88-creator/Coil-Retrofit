@@ -23,7 +23,8 @@ object NetworkModule {
             .addInterceptor(
                 HttpLoggingInterceptor()
                     .apply { level = HttpLoggingInterceptor.Level.BASIC }
-            ).build()
+            )
+            .build()
     }
 
     @Provides
