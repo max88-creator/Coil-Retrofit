@@ -61,7 +61,8 @@ fun ObserveDialogEvent(
                     }
                     .onFailure {
                         detailsCharacter = null
-                        activeDialog = DialogEvent.ShowError("Error", message = it.message.toString())
+                        activeDialog =
+                            DialogEvent.ShowError("Error", message = it.message.toString())
                     }
             } else {
                 detailsCharacter = null
@@ -69,7 +70,7 @@ fun ObserveDialogEvent(
         }
     }
 
-    when(val dialog = activeDialog) {
+    when (val dialog = activeDialog) {
         is DialogEvent.ShowError -> {
             AlertDialog(
                 onDismissRequest = {
@@ -98,8 +99,78 @@ fun ObserveDialogEvent(
                 }
             )
         }
-        is DialogEvent.ConfirmRemoteFavorite -> {}
-        is DialogEvent.ShowCharacterDetails -> {}
+
+        is DialogEvent.ConfirmRemoteFavorite -> {
+            AlertDialog(
+                onDismissRequest = {
+                    activeDialog = null
+                },
+                title = {
+                    Text(
+                        text = "Delete from favorite?"
+                    )
+                },
+                text = {
+                    Text(
+                        text = dialog.characterName
+                    )
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            onConfirmRemoveFavorite(
+                                dialog.characterId
+                            )
+                            activeDialog = null
+                        }
+                    ) {
+                        Text(
+                            text = "Remove"
+                        )
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+                            activeDialog = null
+                        }
+                    ) {
+                        Text(
+                            text = "Cancel"
+                        )
+                    }
+                }
+            )
+        }
+
+        is DialogEvent.ShowCharacterDetails -> {
+            detailsCharacter?.let { character ->
+                AlertDialog(
+                    onDismissRequest = {
+                        activeDialog = null
+                    },
+                    title = {
+                        Text(
+                            text = character.name
+                        )
+                    },
+                    text = {
+                        //character.DetailContent()
+                    },
+                    confirmButton = {
+                        TextButton(
+                            onClick = {
+                                activeDialog = null
+                            }
+                        ) {
+                            Text(
+                                text = "Cancel"
+                            )
+                        }
+                    }
+                )
+            }
+        }
         else -> {}
     }
 }
