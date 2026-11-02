@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import com.example.coilretrofit.domain.model.Character
 import com.example.coilretrofit.domain.model.CharacterStatus
 import com.example.coilretrofit.domain.use_case.character.GetCharacterByIdUseCase
+import com.example.coilretrofit.presentation.components.CharacterDetailContent
 import kotlinx.coroutines.flow.Flow
 
 @Composable
@@ -155,7 +156,9 @@ fun ObserveDialogEvent(
                         )
                     },
                     text = {
-                        //character.DetailContent()
+                        CharacterDetailContent(
+                            character
+                        )
                     },
                     confirmButton = {
                         TextButton(

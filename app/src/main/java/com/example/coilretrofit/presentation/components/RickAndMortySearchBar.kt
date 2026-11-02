@@ -19,7 +19,6 @@ import com.example.coilretrofit.R
 fun RickAndMortySearchBar(
     value: String,
     onValueChange: (String) -> Unit,
-  //  onSearchClick: () -> Unit
 ) {
     OutlinedTextField(
         value = value,
@@ -29,7 +28,7 @@ fun RickAndMortySearchBar(
         leadingIcon = {
             IconButton(
                 onClick = {
-                 //   onSearchClick()
+
                 }
             ) {
                 Icon(

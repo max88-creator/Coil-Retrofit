@@ -87,19 +87,16 @@ fun CharacterCard(
                 }
             ) {
                 Icon(
-                    painter = painterResource(if (isFavorite) {
-                        R.drawable.baseline_favorite
-                    } else {
-                        R.drawable.outline_favorite
-                    }),
+                    painter = painterResource(
+                        if (isFavorite) {
+                            R.drawable.baseline_favorite
+                        } else {
+                            R.drawable.outline_favorite
+                        }
+                    ),
                     contentDescription = null,
                     tint = if (isFavorite) PortalGreen else MaterialTheme.colorScheme.onSurfaceVariant
                 )
-//                Icon(
-//                    imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-//                    contentDescription = null,
-//                    tint = if (isFavorite) PortalGreen else MaterialTheme.colorScheme.onSurfaceVariant,
-//                )
             }
         }
     }

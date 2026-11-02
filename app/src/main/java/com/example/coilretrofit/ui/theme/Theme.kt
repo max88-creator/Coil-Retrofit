@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -33,6 +34,46 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+private val RickMortyDarkColorScheme = darkColorScheme(
+    primary = PortalGreen,
+    onPrimary = SpaceDark,
+    primaryContainer = PortalGreenDark,
+    onPrimaryContainer = AcidGreen,
+    secondary = RickBlue,
+    onSecondary = SpaceDark,
+    secondaryContainer = RickBlueDark,
+    onSecondaryContainer = RickBlue,
+    tertiary = MortyYellow,
+    onTertiary = SpaceDark,
+    background = SpaceDark,
+    onBackground = Color(0xFFE8EDF5),
+    surface = SpaceDarkSurface,
+    onSurface = Color(0xFFE8EDF5),
+    surfaceVariant = SpaceDarkElevated,
+    onSurfaceVariant = Color(0xFFB8C4D9),
+    outline = PortalGreenDark,
+)
+
+private val RickMortyLightColorScheme = lightColorScheme(
+    primary = PortalGreenDark,
+    onPrimary = Color.White,
+    primaryContainer = AcidGreen,
+    onPrimaryContainer = SpaceDark,
+    secondary = RickBlueDark,
+    onSecondary = Color.White,
+    secondaryContainer = RickBlue,
+    onSecondaryContainer = SpaceDark,
+    tertiary = MortyYellow,
+    onTertiary = SpaceDark,
+    background = Color(0xFFF4F7FB),
+    onBackground = SpaceDark,
+    surface = Color.White,
+    onSurface = SpaceDark,
+    surfaceVariant = Color(0xFFE8EDF5),
+    onSurfaceVariant = Color(0xFF4A5568),
+    outline = PortalGreenDark,
+)
+
 @Composable
 fun CoilRetrofitTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -43,7 +84,7 @@ fun CoilRetrofitTheme(
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (darkTheme) RickMortyDarkColorScheme else RickMortyLightColorScheme
         }
 
         darkTheme -> DarkColorScheme
